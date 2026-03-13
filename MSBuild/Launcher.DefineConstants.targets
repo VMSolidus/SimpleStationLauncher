@@ -27,6 +27,9 @@
     </Otherwise>
   </Choose>
   <PropertyGroup>
+    <TargetOS Condition="'$(TargetOS)' == '' And '$(RuntimeIdentifier)' != '' And $([System.String]::new('$(RuntimeIdentifier)').StartsWith('win'))">Windows</TargetOS>
+    <TargetOS Condition="'$(TargetOS)' == '' And '$(RuntimeIdentifier)' != '' And $([System.String]::new('$(RuntimeIdentifier)').StartsWith('linux'))">Linux</TargetOS>
+    <TargetOS Condition="'$(TargetOS)' == '' And '$(RuntimeIdentifier)' != '' And $([System.String]::new('$(RuntimeIdentifier)').StartsWith('osx'))">MacOS</TargetOS>
     <TargetOS Condition="'$(TargetOS)' == ''">$(ActualOS)</TargetOS>
   </PropertyGroup>
   <Choose>
